@@ -47,7 +47,7 @@ CREATE TABLE teams (
     id INT PRIMARY KEY AUTO_INCREMENT,
     project_id INT NOT NULL,            -- Проект
     employee_id INT NOT NULL,           -- Сотрудник
-    role ENUM('developer', 'manager', 'QA', 'analyst'),  -- Роль в команде
+    role ENUM('developer', 'manager', 'QA', 'analyst', 'designer'),  -- Роль в команде
     FOREIGN KEY (project_id) REFERENCES projects(id),
     FOREIGN KEY (employee_id) REFERENCES employees(id)
 );
@@ -70,7 +70,7 @@ CREATE TABLE expenses (
     id INT PRIMARY KEY AUTO_INCREMENT,
     project_id INT NOT NULL,            -- Проект
     amount DECIMAL(10,2) NOT NULL,      -- Сумма расхода
-    category ENUM('salary', 'software', 'hardware', 'misc'),  -- Категория
+    category ENUM('salary', 'software', 'hardware', 'misc', 'travel'),  -- Категория
     description TEXT,                    -- Доп. информация
     FOREIGN KEY (project_id) REFERENCES projects(id)
 );
