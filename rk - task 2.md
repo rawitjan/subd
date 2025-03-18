@@ -263,3 +263,79 @@ INSERT INTO damage_reports (id, car_id, description, repair_cost) VALUES
 13. Найти бронирования длительностью более 5 дней (DATEDIFF?)
 14. Вывести количество повреждений и суммарную стоимость ремонта по каждому автомобилю
 15. Средняя зарплата по каждой должности
+---
+```sql
+CREATE TABLE locations (
+    id INT PRIMARY KEY, 
+    title VARCHAR(50),
+    address VARCHAR(100),
+    phone VARCHAR(50)
+);
+
+CREATE TABLE employees (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    position VARCHAR(50),
+    salary int
+    );
+    
+CREATE TABLE customers (
+	id INT PRIMARY KEY,
+    name VARCHAR(50),
+    phone VARCHAR(50),
+    email VARCHAR(50),
+    driver_license VARCHAR(50)
+);
+
+CREATE TABLE cars (
+	id INT PRIMARY KEY,
+    brand VARCHAR(50),
+    model VARCHAR(50),
+    `year` YEAR, -- год выпуска 
+    license_plate VARCHAR(10),
+    price_per_day INT,
+    `status` ENUM('rented', 'maintenance', 'available')
+);
+
+CREATE TABLE reservations (
+	id INT PRIMARY KEY,
+    car_id INT,
+    customer_id INT,
+    start_date DATE,
+    end_date DATE,
+    total_cost INT,
+    
+    FOREIGN KEY (car_id) REFERENCES cars(id),
+    FOREIGN KEY (customer_id) REFERENCES customers(id)
+);
+
+CREATE TABLE insurance (
+	id INT PRIMARY KEY,
+    reservation_id INT,
+    type VARCHAR(15),
+    cost INT,
+    
+    FOREIGN KEY (reservation_id) REFERENCES reservations(id)
+);
+
+CREATE TABLE payments(
+	id INT PRIMARY KEY,
+    reservation_id INT,
+	amount INT,
+    method ENUM('card','cash','bank_transfer'),
+    `date` DATE,
+    
+	FOREIGN KEY (reservation_id) REFERENCES reservations(id)
+);
+
+CREATE TABLE damage_reports  (
+	id INT PRIMARY KEY,
+    car_id INT,
+    description VARCHAR(100),
+    repair_cost INT,
+    
+    FOREIGN KEY (car_id) REFERENCES cars(id)
+);
+
+-- github.com/rawitjan/subd -> rk - task 2
+```
