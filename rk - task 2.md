@@ -61,7 +61,7 @@
 #### Данные
 ```sql 
 -- LOCATIONS
-INSERT INTO locations (id, city, address, phone) VALUES
+INSERT INTO locations (id, title, address, phone) VALUES
 (1, 'Астана', 'Астана центр, улица 1 дом 11', '+7 701 5666692'),
 (2, 'Алматы', 'Алматы центр, улица 2 дом 12', '+7 701 4044882'),
 (3, 'Шымкент', 'Шымкент центр, улица 3 дом 13', '+7 701 8312936'),
