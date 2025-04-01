@@ -242,21 +242,21 @@ INSERT INTO damage_reports (id, car_id, description, repair_cost) VALUES
 ---
 ```sql
 CREATE TABLE locations (
-    id INT PRIMARY KEY, 
+    id INT PRIMARY KEY AUTO_INCREMENT, 
     title VARCHAR(50),
     address VARCHAR(100),
     phone VARCHAR(50)
 );
 
 CREATE TABLE employees (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(50),
     position VARCHAR(50),
     salary int
     );
     
 CREATE TABLE customers (
-	id INT PRIMARY KEY,
+	id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(50),
     phone VARCHAR(50),
     email VARCHAR(50),
@@ -264,7 +264,7 @@ CREATE TABLE customers (
 );
 
 CREATE TABLE cars (
-	id INT PRIMARY KEY,
+	id INT PRIMARY KEY AUTO_INCREMENT,
     brand VARCHAR(50),
     model VARCHAR(50),
     `year` YEAR, -- год выпуска 
@@ -274,7 +274,7 @@ CREATE TABLE cars (
 );
 
 CREATE TABLE reservations (
-	id INT PRIMARY KEY,
+	id INT PRIMARY KEY AUTO_INCREMENT,
     car_id INT,
     customer_id INT,
     start_date DATE,
@@ -286,7 +286,7 @@ CREATE TABLE reservations (
 );
 
 CREATE TABLE insurance (
-	id INT PRIMARY KEY,
+	id INT PRIMARY KEY AUTO_INCREMENT,
     reservation_id INT,
     type VARCHAR(15),
     cost INT,
@@ -295,7 +295,7 @@ CREATE TABLE insurance (
 );
 
 CREATE TABLE payments(
-	id INT PRIMARY KEY,
+	id INT PRIMARY KEY AUTO_INCREMENT,
     reservation_id INT,
 	amount INT,
     method ENUM('card','cash','bank_transfer'),
@@ -305,7 +305,7 @@ CREATE TABLE payments(
 );
 
 CREATE TABLE damage_reports  (
-	id INT PRIMARY KEY,
+	id INT PRIMARY KEY AUTO_INCREMENT,
     car_id INT,
     description VARCHAR(100),
     repair_cost INT,
